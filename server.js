@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const path = require("path");
-// const controllers = require('./controllers/burgers_controllers.js');
+const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,11 +20,16 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
+//getting handlebars so we can have a webpage
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//requiring and calling the function that was exported from the controllers file. It will get the webpage and post it in the local host. At the same time it will listen for certain request so i can edit the DB and then refresh the page
 require("./controllers/burgers_controllers.js")(app);
 
-app.listen(process.env.PORT || 5000);
+//after connecting to the DB base with sequelize, it will create a localhost so the user can view the page
+db.sequelize.sync().then(function(){
+	app.listen(process.env.PORT || 5000);
+});

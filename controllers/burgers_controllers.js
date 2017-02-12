@@ -1,18 +1,29 @@
 //requiring files
-const burger = require("../models/burger.js");
 const express = require("express");
 const app = express();
+const db = require("../models");
 
+//creating different routes for special events. along with that we are using the models directory (sequelize)
 module.exports = function(app){
   app.get("/", function(req, res) {
-    burger("all", res);
+    db.burgers.findAll().then(function(result){
+      res.render("index", { burgerList: result });
+    });
   });
 
   app.post("/", function(req, res) {
-    burger("insert", res, req.body.burger_name);
+    db.burgers.create({burger_name: req.body.burger_name}).then(function(){
+      res.redirect("/");
+    });
   });
 
   app.put("/", function(req, res) {
-    burger("update", res, req.body.id);
+    db.burgers.update({devoured: true}, {
+      where:{
+        id: req.body.id
+      }
+    }).then(function(){
+      res.redirect("/");
+    });
   });
 }
