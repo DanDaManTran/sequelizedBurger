@@ -1,0 +1,48 @@
+<div class="container main">
+  <div class="row">
+    <div class="col-sm-6 leftCol">
+      <h3>GET IN MY BELLY</h3>
+
+      <ul style="list-style: none;">
+      {{#each burgerList}}
+        {{#if this.devoured}}
+        {{else}}
+          <li>
+            <div class="row">
+              <div class="col-sm-9">
+                <span class="left notDevour">
+                  {{this.burger_name}}
+                </span>
+              </div>
+
+              <div class="col-sm-3">
+                  <form action="/?_method=PUT" method="POST">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <button type="submit">Devour!</button>
+                  </form>
+              </div>
+            </div>
+          <li>
+      {{/if}}
+      {{/each}}
+      </ul>
+    </div>
+
+
+    <div class="col-sm-6 rightCol">
+      <h3>Yummy in my tummy</h3>
+
+      <ul style="list-style: none;">
+      {{#each burgerList}}
+        {{#if this.devoured}}
+          <li>
+            <span>
+              {{this.burger_name}}
+            </span>
+          </li>
+        {{/if}}
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
