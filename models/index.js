@@ -15,7 +15,6 @@ if (env==="development") {
   config.password = kee.mysql;
 }
 
-
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
