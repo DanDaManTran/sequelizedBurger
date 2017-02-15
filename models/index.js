@@ -10,7 +10,12 @@ var db        = {};
 
 //keeping my password hidden i inserted the password to the config object.
 var kee       = require("../key.js");
-config.password = kee.mysql;
+
+if(env==="development"){
+  config.password = kee.mysql;
+} else {
+  config.password = kee.heroku;
+}
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
