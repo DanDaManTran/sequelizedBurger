@@ -10,11 +10,11 @@ var db        = {};
 
 //keeping my password hidden i inserted the password to the config object.
 var kee       = require("../key.js");
-console.log(env);
-if(env==="development"){
-  config.password = kee.mysql;
-} else {
+
+if (process.env.JAWSDB_URL){
   config.password = kee.heroku;
+} else {
+  config.password = kee.mysql;
 }
 
 if (config.use_env_variable) {
