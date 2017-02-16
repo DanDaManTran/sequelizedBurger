@@ -31,7 +31,19 @@ You should also go into the ```config/config.json``` to double check then connec
 
 In the db directory you will notice the schema and seed for the sql database.
 
-After you got your database set up
+After you got your database set up, navigate to the ```models/index.js```. In there uncomment line 12-18
+
+```
+if (require("../key.js")){
+  var kee = require("../key.js");
+
+  if (env==="development") {
+    config.password = kee.mysql;
+  }
+}
+```
+
+We have that comment out due to development errors to heroku. 
 
 ##Running It
 
