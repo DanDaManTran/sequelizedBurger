@@ -26,4 +26,8 @@ module.exports = function(app){
       res.redirect("/");
     });
   });
+
+  app.use( function(req, res){
+    res.send(404);
+  });
 }
