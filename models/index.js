@@ -9,11 +9,9 @@ var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
 //keeping my password hidden i inserted the password to the config object.
-var kee;
-
 if (require("../key.js")){
   var kee = require("../key.js");
-  
+
   if (env==="development") {
     config.password = kee.mysql;
   }
