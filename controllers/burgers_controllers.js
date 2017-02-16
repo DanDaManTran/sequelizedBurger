@@ -7,15 +7,16 @@ const db = require("../models");
 module.exports = function(app){
 
   app.get("/", function(req, res) {
-    db.burgers.findAll().then(function(result){
-      res.render("index", { burgerList: result });
-    });
+    // db.burgers.findAll().then(function(result){
+    //   res.render("index", { burgerList: result });
+    // });
+    res.send("Hello");
   });
 
   app.get("/favicon.ico", function(req, res){
     res.send(204);
   });
-  
+
   app.post("/", function(req, res) {
     db.burgers.create({burger_name: req.body.burger_name}).then(function(){
       res.redirect("/");
