@@ -1,13 +1,13 @@
 # sequelizedBurger
 
-##Week 15 Assignment - Burger 2: The Sequel!
+## Week 15 Assignment - Burger 2: The Sequel!
 
 This is a burger logger that keeps track of all the burgers you want to eat and have ate. For the list that you want to eat there is a devour button that will update the database that the burger has been eaten.
 
 Using MySQL to keep track of the burgers. Using Node for the backend experience. Express to host the page. Handlebars to create the page. We will also be using sequelize. Sequelize is a easy to use MySQL set up.
 
 
-##Installing
+## Installing
 
 After cloning this
 
@@ -15,7 +15,7 @@ After cloning this
 npm install
 ```
 
-##Setting Up
+## Setting Up
 
 then you will need to create a key.js file in the same directory as the server.js. Inside the key.js file you will enter in your mysql password with the following format.
 
@@ -45,7 +45,7 @@ if (require("../key.js")){
 
 We have that comment out due to development errors to heroku. 
 
-##Running It
+## Running It
 
 You will want to ```node server.js``` and go to your localhost:5000. There you will be able to log all the burgers you ate.
 
